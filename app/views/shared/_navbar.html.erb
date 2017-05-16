@@ -20,7 +20,10 @@
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= gravatar_tag current_user.email, size: 28, class: "img-circle" %>&nbsp
+              <%= current_user.email %> <span class="caret"></span>
+            </a>
             <ul class="dropdown-menu">
               <li><a href="#">Wish List</a></li>
               <li><a href="#">My Trips</a></li>
