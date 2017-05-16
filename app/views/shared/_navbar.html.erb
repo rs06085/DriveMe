@@ -1,5 +1,5 @@
-<!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -13,29 +13,30 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
 
-        <% if (!user_signed_in?) %>
-          <li><%= link_to "Log in", new_user_session_path %></li>
-          <li><%= link_to "Register", new_user_registration_path %></li>
+        <% if(!user_signed_in?) %>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
         <% else %>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <%= gravatar_tag current_user.email, size: 28, class: "img-circle" %>&nbsp
-              <%= current_user.email %> <span class="caret"></span>
+              <%= gravatar_tag current_user.email, size: 28, class: "img-circle" %>&nbsp;
+              <%= current_user.fullname %> <span class="caret"></span>
             </a>
+
             <ul class="dropdown-menu">
-              <li><a href="#">Wish List</a></li>
-              <li><a href="#">My Trips</a></li>
+              <li><a href="#">Your Trips</a></li>
+              <li><a href="#">Wish Lists</a></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Account Settings</a></li>
+              <li><a href="#">Account Setting</a></li>
               <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
-
         <% end %>
+
+
       </ul>
+
     </div><!--/.nav-collapse -->
   </div>
 </nav>
