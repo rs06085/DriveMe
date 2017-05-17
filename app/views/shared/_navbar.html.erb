@@ -19,7 +19,11 @@
         <% else %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <%= gravatar_tag current_user.email, size: 28, class: "img-circle" %>&nbsp;
+              <% if current_user.image %>
+                <%= image_tag current_user.image, size: 32, class: "img-circle" %>&nbsp;
+              <% else %>
+                <%= gravatar_tag current_user.email, size: 28, class: "img-circle" %>&nbsp;
+              <% end %>
               <%= current_user.fullname %> <span class="caret"></span>
             </a>
 
