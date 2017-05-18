@@ -9,4 +9,5 @@ Rails.application.routes.draw do
                               :registrations => 'registrations'}
 
   resources :users, only: [:show]
+  resources :cars
 end
