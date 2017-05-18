@@ -1,0 +1,245 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		List your car and start earning money!
+	</div>
+	<div class="panel-body">
+		<div class="container">
+
+			<%= form_for @car do |f| %>
+
+				<div class="row">
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label>Type</label>
+							<%= f.select :car_type, [["City Car","City Car"], ["Sedan","Sedan"], ["Station Wagon","Station Wagon"], ["SUV","SUV"]], id: "type", prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label>Year</label>
+							<%= f.select :year, [["2017","2017"], ["2016","2016"], ["2015","2015"], ["2014","2014"], ["2013","2013"]],prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+          <div class="col-md-3">
+						<div class="form-group">
+							<label>Make</label>
+							<div class="input-group">
+								<%= f.text_field :make, placeholder: "eg. Audi", class: "form-group" %>
+							</div>
+						</div>
+					</div>
+
+          <div class="col-md-3">
+						<div class="form-group">
+							<label>Model</label>
+							<div class="input-group">
+								<%= f.text_field :model, placeholder: "eg. A6 All-Road", class: "form-group" %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label>Mileage</label>
+							<%= f.select :mileage, [["0-30000km","0-30000km"], ["30000-60000km","30000-60000km"], ["60000-100000km","60000-100000km"], ["100000-150000km","100000-150000km"]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label>Qubic Qapacity</label>
+							<%= f.select :qubic_capacity, [["<1000cc","<1000cc"], ["1000 - 1400cc","1000 - 1400cc"], ["1400 - 1800cc","1400 - 1800cc"], [">1800cc",">1800cc"]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+          <div class="col-md-3 select">
+						<div class="form-group">
+							<label>Fuel Type</label>
+							<%= f.select :fuel_type, [["Unleaded","Unleaded"], ["Petrol","Petrol"], ["Gas","Gas"], ["Hybrid","Hybrid"]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+          <div class="col-md-3 select">
+						<div class="form-group">
+							<label>Transmission</label>
+							<%= f.select :transmission, [["Manual","Manual"], ["Automatic","Automatic"]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+
+        <div class="row">
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label>Color</label>
+							<%= f.select :color, [["Black","Black"], ["White","White"], ["Grey","Grey"]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label>Airbags</label>
+							<%= f.select :airbags, [["1",1], ["2",2]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+          <div class="col-md-3 select">
+						<div class="form-group">
+							<label>Doors</label>
+							<%= f.select :doors, [["1",1], ["2",2]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+
+          <div class="col-md-3 select">
+						<div class="form-group">
+							<label>Seats</label>
+							<%= f.select :seats, [["1",1], ["2",2]], prompt: "Select", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+
+        <hr>
+
+				<div class="row">
+					<div class="form-group">
+						<label>Description</label>
+						<%= f.text_area :description, rows: 5, placeholder: "Tell about your car", class: "form-control" %>
+					</div>
+				</div>
+
+        <div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<%= f.check_box :is_all_wheel %> 4-Wheel Drive
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_air %> Air Condition / Clima
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_babyseat %> Baby Seat
+						</div>
+            <div class="form-group">
+							<%= f.check_box :is_cd_player %> CD/MP3 Player
+						</div>
+            <div class="form-group">
+							<%= f.check_box :is_wedding_car %> Wedding Car
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<%= f.check_box :is_gps %> GPS/Navigation
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_pet_friendly %> Pet Friendly
+						</div>
+            <div class="form-group">
+							<%= f.check_box :is_radio %> Radio Input
+						</div>
+            <div class="form-group">
+							<%= f.check_box :is_camera %> Camera/TV
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<label>Pickup Address</label>
+						<%= f.text_field :pickup_address, placeholder: "What is your address?", class: "form-control" %>
+					</div>
+				</div>
+
+        <div class="row">
+					<div class="form-group">
+						<label>Dropoff Address</label>
+						<%= f.text_field :dropoff_address, placeholder: "What is your dropoff address?", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Daily Price</label>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<%= f.text_field :daily_price, placeholder: "eg. $100", class: "form-control" %>
+							</div>
+						</div>
+					</div>
+
+          <div class="col-md-6">
+						<div class="form-group">
+							<label>Weekly Price</label>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<%= f.text_field :weekly_price, placeholder: "eg. $100", class: "form-control" %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+        <div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Daily Km</label>
+							<div class="input-group">
+								<div class="input-group-addon">km</div>
+								<%= f.text_field :daily_km, placeholder: "eg. 100km", class: "form-control" %>
+							</div>
+						</div>
+					</div>
+
+          <div class="col-md-6">
+						<div class="form-group">
+							<label>Weekly Km</label>
+							<div class="input-group">
+								<div class="input-group-addon">km</div>
+								<%= f.text_field :weekly_km, placeholder: "eg. 700km", class: "form-control" %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+        <div class="row">
+					<div class="col-md-6">
+            <div class="form-group">
+  						<%= f.check_box :delivery %> Delivery
+  					</div>
+					</div>
+
+          <div class="col-md-6">
+						<div class="form-group">
+							<label>Delivery Price</label>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<%= f.text_field :delivery_price, placeholder: "eg. $10", class: "form-control" %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+        <div class="row">
+					<div class="form-group">
+						<label>Insurance Expiry Date</label>
+						<%= f.text_field :insurance_expiry_date, placeholder: "insurance expiry date", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<%= f.check_box :active %> Active
+					</div>
+				</div>
+
+				<div class="actions">
+					<%= f.submit "Save", class: "btn btn-primary" %>
+				</div>
+
+			<% end %>
+
+		</div>
+	</div>
+</div>
