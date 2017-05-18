@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   validates :fullname, presence: true, length: {maximum: 50}
 
+  has_many :cars
+
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.fullname = auth.info.name

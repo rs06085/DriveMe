@@ -10,7 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517131554) do
+ActiveRecord::Schema.define(version: 20170517184338) do
+
+  create_table "cars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type"
+    t.integer  "year"
+    t.string   "make"
+    t.string   "model"
+    t.string   "mileage"
+    t.string   "qubic_capacity"
+    t.string   "fuel_type"
+    t.string   "transmission"
+    t.string   "color"
+    t.integer  "airbags"
+    t.integer  "doors"
+    t.integer  "seats"
+    t.text     "description",           limit: 65535
+    t.boolean  "is_all_wheel"
+    t.boolean  "is_air"
+    t.boolean  "is_babyseat"
+    t.boolean  "is_cd_player"
+    t.boolean  "is_gps"
+    t.boolean  "is_pet_friendly"
+    t.boolean  "is_radio"
+    t.boolean  "is_camera"
+    t.boolean  "is_wedding_car"
+    t.integer  "daily_price"
+    t.integer  "weekly_price"
+    t.integer  "daily_km"
+    t.integer  "weekly_km"
+    t.string   "pickup_address"
+    t.string   "dropoff_address"
+    t.boolean  "delivery"
+    t.integer  "delivery_price"
+    t.date     "insurance_expiry_date"
+    t.boolean  "active"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_cars_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
@@ -39,4 +78,5 @@ ActiveRecord::Schema.define(version: 20170517131554) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "cars", "users"
 end
