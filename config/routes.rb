@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :cars
+  resources :photos
 end

@@ -2,6 +2,8 @@
 @import "bootstrap";
 @import "toastr";
 
+*= require gmaps-auto-complete
+
 body {
   color: #565a5c;
   background-color: #F8F8F8;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518105414) do
+ActiveRecord::Schema.define(version: 20170518191451) do
 
   create_table "cars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "car_type"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20170518105414) do
     t.index ["user_id"], name: "index_cars_on_user_id", using: :btree
   end
 
+  create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "car_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["car_id"], name: "index_photos_on_car_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
@@ -79,4 +90,5 @@ ActiveRecord::Schema.define(version: 20170518105414) do
   end
 
   add_foreign_key "cars", "users"
+  add_foreign_key "photos", "cars"
 end
