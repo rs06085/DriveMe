@@ -72,3 +72,4 @@ gem 'mini_magick', '~> 4.7'
 gem 'carrierwave-aws', '~> 1.1'
 gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'paperclip'
+gem "font-awesome-rails"

@@ -5,8 +5,9 @@
 	<div class="panel-body">
 		<div class="container">
 
-			<%= form_for @car do |f| %>
+			<%= form_for @car, html: {multipart: true} do |f| %>
 
+        <h3>Car Details</h3>
 				<div class="row">
 					<div class="col-md-3 select">
 						<div class="form-group">
@@ -26,7 +27,7 @@
 						<div class="form-group">
 							<label>Make</label>
 							<div class="input-group">
-								<%= f.text_field :make, placeholder: "eg. Audi", class: "form-group" %>
+								<%= f.text_field :make, placeholder: "eg. Audi", class: "form-control" %>
 							</div>
 						</div>
 					</div>
@@ -35,7 +36,7 @@
 						<div class="form-group">
 							<label>Model</label>
 							<div class="input-group">
-								<%= f.text_field :model, placeholder: "eg. A6 All-Road", class: "form-group" %>
+								<%= f.text_field :model, placeholder: "eg. A6 All-Road", class: "form-control" %>
 							</div>
 						</div>
 					</div>
@@ -110,8 +111,13 @@
 					</div>
 				</div>
 
+        <br>
+
         <div class="row">
-					<div class="col-md-4">
+          <label>Car Features</label>
+        </div>
+        <div class="row">
+					<div class="col-md-6">
 						<div class="form-group">
 							<%= f.check_box :is_all_wheel %> 4-Wheel Drive
 						</div>
@@ -129,7 +135,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
 							<%= f.check_box :is_gps %> GPS/Navigation
 						</div>
@@ -145,6 +151,8 @@
 					</div>
 				</div>
 
+        <hr>
+
 				<div class="row">
 					<div class="form-group">
 						<label>Pickup Address</label>
@@ -158,6 +166,8 @@
 						<%= f.text_field :dropoff_address, placeholder: "What is your dropoff address?", class: "form-control" %>
 					</div>
 				</div>
+
+        <hr>
 
 				<div class="row">
 					<div class="col-md-6">
@@ -220,6 +230,23 @@
 						</div>
 					</div>
 				</div>
+
+        <hr>
+
+        <div id="photos"><%= render 'photos/list' %></div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <span class="btn btn-default btn-file">
+                <i class = "fa fa-cloud-upload fa-lg"></i> Upload Photos
+                <%= file_field_tag "images[]", type: :file, multiple: true %>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <hr>
 
         <div class="row">
 					<div class="form-group">

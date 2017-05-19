@@ -32,7 +32,7 @@ class CarsController < ApplicationController
   end
 
   def edit
-    if current_user.id == @room.user.id
+    if current_user.id == @car.user.id
       @photos = @car.photos
     else
       redirect_to root_path, notice: "You don't have permission"
@@ -48,7 +48,7 @@ class CarsController < ApplicationController
         end
       end
 
-      redirect_to edit_room_path(@car), notice: "Car listing was updated successfully"
+      redirect_to edit_car_path(@car), notice: "Car listing was updated successfully"
     else
       render :edit
     end
