@@ -7,6 +7,7 @@ class CarsController < ApplicationController
   end
 
   def show
+    @photos = @car.photos
   end
 
   def new
@@ -17,18 +18,37 @@ class CarsController < ApplicationController
     @car = current_user.cars.build(car_params)
 
     if @car.save
-      redirect_to @car, notice: "Car added successfully"
+      if params[:images]
+        params[:images].each do |image|
+          @car.photos.create(image: image)
+        end
+      end
+
+      @photos = @car.photos
+      redirect_to edit_car_path(@car), notice: "Car added successfully"
     else
       render :new
     end
   end
 
   def edit
+    if current_user.id == @room.user.id
+      @photos = @car.photos
+    else
+      redirect_to root_path, notice: "You don't have permission"
+    end
   end
 
   def update
     if @car.update(car_params)
-      redirect_to @car, notice: "Car listing was updated successfully"
+
+      if params[:images]
+        params[:images].each do |image|
+          @car.photos.create(image: image)
+        end
+      end
+
+      redirect_to edit_room_path(@car), notice: "Car listing was updated successfully"
     else
       render :edit
     end
