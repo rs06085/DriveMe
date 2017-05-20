@@ -28,7 +28,7 @@
         <br>
         <hr>
 
-        <div class="row">
+        <div class="row text-center">
 					<div class="col-md-12 text-center">
 
 						<div class="row text-center row-space-1">
@@ -91,14 +91,13 @@
 			</div>
 		</div>
 
+    <br>
+    <hr>
+
 		<!-- Car Features -->
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Features</h2>
-      </div>
-    </div>
 		<div class="row">
 			<div class="col-md-12">
+        <h2>Features</h2>
 				<div class="row">
 					<div class="col-md-6">
 						<ul class="amenities">
@@ -120,7 +119,15 @@
 			</div>
 		</div>
 
+    <br>
+    <hr>
+
 		<!-- Carousel -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Photo Gallery</h2>
+      </div>
+    </div>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -155,6 +162,42 @@
 				</div>
 			</div>
 		</div>
+
+    <br>
+    <hr>
+
+    <!-- Google Map -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Location</h2>
+      <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+        <script>
+          function initMap() {
+            var uluru = {lat: <%= @car.latitude %>, lng: <%= @car.longitude %>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 14,
+              center: uluru
+            });
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map,
+              title: "DriveMe"
+            });
+          }
+        </script>
+        <script async defer
+          src= <%= ENV["GOOGLE_MAP_API"] %>>
+        </script>
+      </div>
+    </div>
 
 	</div>
 </div>

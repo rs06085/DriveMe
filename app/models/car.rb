@@ -2,6 +2,9 @@ class Car < ApplicationRecord
   belongs_to :user
   has_many :photos
 
+  geocoded_by :pickup_address
+  after_validation :geocode, if: :pickup_address_changed?
+
   validates :car_type, presence: true
   validates :year, presence: true
   validates :make, presence: true
