@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = current_user.reservations.create(reservation_params)
 
-    redirect_to @reservation.car
+    redirect_to @reservation.car, notice: "Your request has been sent"
   end
 
   private
