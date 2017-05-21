@@ -8,6 +8,8 @@ class CarsController < ApplicationController
 
   def show
     @photos = @car.photos
+
+    @nearby_cars = @car.nearbys(10)
   end
 
   def new
@@ -27,6 +29,7 @@ class CarsController < ApplicationController
       @photos = @car.photos
       redirect_to edit_car_path(@car), notice: "Car added successfully"
     else
+      flash[:alert] = "Please provide all information for this room."
       render :new
     end
   end
@@ -50,6 +53,7 @@ class CarsController < ApplicationController
 
       redirect_to edit_car_path(@car), notice: "Car listing was updated successfully"
     else
+      flash[:alert] = "Please provide all information for this room."
       render :edit
     end
   end

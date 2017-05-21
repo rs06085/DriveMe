@@ -1,6 +1,7 @@
 class Car < ApplicationRecord
   belongs_to :user
   has_many :photos
+  has_many :reservations
 
   geocoded_by :pickup_address
   after_validation :geocode, if: :pickup_address_changed?
@@ -18,8 +19,8 @@ class Car < ApplicationRecord
   validates :doors, presence: true
   validates :seats, presence: true
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :daily_price, presence: true
-  validates :weekly_price, presence: true
+  validates :daily_price, presence: true, numericality: true
+  validates :weekly_price, presence: true, numericality: true
   validates :daily_km, presence: true
   validates :weekly_km, presence: true
   validates :pickup_address, presence: true

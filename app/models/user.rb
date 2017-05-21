@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :fullname, presence: true, length: {maximum: 50}
 
   has_many :cars
+  has_many :reservations
 
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
