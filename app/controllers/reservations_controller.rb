@@ -26,6 +26,10 @@ class ReservationsController < ApplicationController
     redirect_to @reservation.car, notice: "Your request has been sent"
   end
 
+  def your_trips
+    @trips = current_user.reservations
+  end
+
   private
   def is_conflict(start_date, end_date)
     car = Car.find(params[:car_id])
