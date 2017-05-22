@@ -8,7 +8,6 @@ class CarsController < ApplicationController
 
   def show
     @photos = @car.photos
-
     @nearby_cars = @car.nearbys(10)
   end
 

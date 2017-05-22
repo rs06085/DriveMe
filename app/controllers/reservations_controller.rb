@@ -30,6 +30,10 @@ class ReservationsController < ApplicationController
     @trips = current_user.reservations
   end
 
+  def your_reservations
+    @cars = current_user.cars
+  end
+
   private
   def is_conflict(start_date, end_date)
     car = Car.find(params[:car_id])
