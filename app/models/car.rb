@@ -24,4 +24,12 @@ class Car < ApplicationRecord
   validates :daily_km, presence: true
   validates :weekly_km, presence: true
   validates :pickup_address, presence: true
+
+  def show_first_photo(size)
+    if self.photos.length == 0
+      ActionController::Base.helpers.asset_path('black-car.png')
+    else
+      self.photos[0].image.url(size)
+    end
+  end
 end

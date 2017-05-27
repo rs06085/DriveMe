@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521111528) do
+ActiveRecord::Schema.define(version: 20170527092747) do
 
   create_table "cars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "car_type"
@@ -51,6 +51,23 @@ ActiveRecord::Schema.define(version: 20170521111528) do
     t.float    "latitude",              limit: 24
     t.float    "longitude",             limit: 24
     t.index ["user_id"], name: "index_cars_on_user_id", using: :btree
+  end
+
+  create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",         limit: 65535
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -105,6 +122,8 @@ ActiveRecord::Schema.define(version: 20170521111528) do
   end
 
   add_foreign_key "cars", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "photos", "cars"
   add_foreign_key "reservations", "cars"
   add_foreign_key "reservations", "users"

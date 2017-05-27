@@ -21,7 +21,7 @@
               </div>
               <div class="col-md-6">
                 <%= link_to car_path(reservation.car) do %>
-                  <%= image_tag reservation.car.photos.first.image.url(:thumb) %>
+                  <%= image_tag reservation.car.show_first_photo(:thumb), size: 70 %>
                 <% end %>
               </div>
               <div class="col-md-2">
